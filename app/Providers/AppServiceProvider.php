@@ -20,6 +20,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Force HTTPS in production
+        if (env('APP_ENV') == 'production') {
+            $this->app['request']->server->set('HTTPS', true);
+        }
+
         // Add human-readable date format macros
         Carbon::macro('toHumanDate', function () {
             return $this->format('M d, Y'); // Jan 01, 2023
