@@ -1,19 +1,16 @@
 services:
   - type: web
     name: laravel-college
-    env: php
-    buildCommand: composer install --no-interaction --prefer-dist --optimize-autoloader && npm install && npm run build
-    startCommand: php artisan serve --host 0.0.0.0 --port $PORT
+    runtime: "docker"
+    dockerfilePath: Dockerfile
+    dockerCommand: apache2-foreground
     envVars:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
-        value: false
+        value: "false"
       - key: APP_URL
-        fromService:
-          name: laravel-college
-          type: web
-          property: url
+        sync: false
       - key: APP_KEY
         generateValue: true
       - key: DB_CONNECTION
@@ -27,6 +24,5 @@ services:
       - key: LOG_CHANNEL
         value: stderr
 
-databases:
-  - name: laravel-college-db
-    ipAllowList: []
+    plan: free
+    healthCheckPath: /
