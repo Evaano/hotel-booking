@@ -1,0 +1,27 @@
+{
+    "$schema": "https://json.schemastore.org/package.json",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite",
+        "format:php": "php vendor/bin/pint",
+        "format:blade": "prettier --write \"resources/**/*.blade.php\"",
+        "format:prettier": "prettier --write .",
+        "format": "npm run format:php && npm run format:blade && npm run format:prettier"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.2",
+        "@tailwindcss/vite": "^4.0.0",
+        "alpinejs": "^3.4.2",
+        "autoprefixer": "^10.4.2",
+        "axios": "^1.8.2",
+        "concurrently": "^9.0.1",
+        "laravel-vite-plugin": "^1.2.0",
+        "postcss": "^8.4.31",
+        "prettier": "^3.6.2",
+        "prettier-plugin-blade": "^2.1.21",
+        "tailwindcss": "^3.1.0",
+        "vite": "^6.2.4"
+    }
+}
